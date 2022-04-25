@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var myButton: UIButton!
+    @IBOutlet weak var myTextField: UITextField!
     
     @IBAction func myTextFieldChanged(_ sender: UITextField) {
         if sender.text == ""{
@@ -29,12 +30,23 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-       
     }
     
     private func setupCollectionView(){
         self.myCollectionView.delegate = self
         self.myCollectionView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        var textSearch = ""
+        if segue.identifier == "buttonSegue"{
+            textSearch = myTextField.text!
+        }else if segue.identifier == "itemSegue"{
+            let item = sender as? SearchCollectionViewCell
+            textSearch = item?.itemLabel.text?.lowercased() ?? "sun"
+        }
+        let listVC = segue.destination as! ListViewController
+        listVC.listViewModel = ListViewModel(search: textSearch, vc: listVC)
     }
 }
 

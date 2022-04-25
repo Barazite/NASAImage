@@ -51,8 +51,11 @@
                                 <rect key="frame" x="361" y="0.0" width="53" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <segue destination="ro6-x1-Xdr" kind="show" identifier="buttonSegue" id="j7P-hP-QwA"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUICK ACCESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbD-UP-F63">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUICK ACCESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbD-UP-F63">
                                 <rect key="frame" x="8" y="42" width="127.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
@@ -100,6 +103,7 @@
                                         <connections>
                                             <outlet property="itemImage" destination="Acr-Gq-qEf" id="fKo-IY-s40"/>
                                             <outlet property="itemLabel" destination="PDQ-oF-Z1s" id="jqm-Vf-Wmr"/>
+                                            <segue destination="ro6-x1-Xdr" kind="show" identifier="itemSegue" id="xMI-o6-36q"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -126,15 +130,99 @@
                     <connections>
                         <outlet property="myButton" destination="PiO-2Z-s4h" id="I4M-At-0uD"/>
                         <outlet property="myCollectionView" destination="1uC-yl-9Pc" id="jSS-v0-xsz"/>
+                        <outlet property="myTextField" destination="s09-BN-U4L" id="yan-kp-DgC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwI-kS-SoE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="79.6875"/>
         </scene>
+        <!--List View Controller-->
+        <scene sceneID="ovs-kc-X2a">
+            <objects>
+                <viewController id="ro6-x1-Xdr" customClass="ListViewController" customModule="NASAImages" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dSV-z1-2xc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au8-Cy-T8Q">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4V8-p3-jI2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NasaItem" rowHeight="150" id="v8j-Oi-9o6" customClass="ListTableViewCell" customModule="NASAImages" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v8j-Oi-9o6" id="rXF-sH-m3X">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZkP-jp-4R7">
+                                                    <rect key="frame" x="5" y="5" width="140" height="139"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="140" id="hZf-78-qT5"/>
+                                                        <constraint firstAttribute="width" constant="140" id="vtl-Mu-0zt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nl-W5-NSM">
+                                                    <rect key="frame" x="153" y="5" width="253" height="140"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4nl-W5-NSM" secondAttribute="trailing" constant="8" id="DEg-kh-hL7"/>
+                                                <constraint firstItem="4nl-W5-NSM" firstAttribute="top" secondItem="ZkP-jp-4R7" secondAttribute="top" id="WjT-4e-h8L"/>
+                                                <constraint firstItem="ZkP-jp-4R7" firstAttribute="top" secondItem="rXF-sH-m3X" secondAttribute="top" constant="5" id="YgX-9a-o18"/>
+                                                <constraint firstItem="4nl-W5-NSM" firstAttribute="leading" secondItem="ZkP-jp-4R7" secondAttribute="trailing" constant="8" id="Z8c-UT-e30"/>
+                                                <constraint firstItem="4nl-W5-NSM" firstAttribute="bottom" secondItem="ZkP-jp-4R7" secondAttribute="bottom" id="qPA-Cy-PcA"/>
+                                                <constraint firstItem="ZkP-jp-4R7" firstAttribute="leading" secondItem="rXF-sH-m3X" secondAttribute="leading" constant="5" id="wdC-w1-vWx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myNasaImage" destination="ZkP-jp-4R7" id="VqM-Gx-MYx"/>
+                                            <outlet property="myNasaLabel" destination="4nl-W5-NSM" id="TsH-Vw-e00"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KOD-z2-McQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KOD-z2-McQ" firstAttribute="bottom" secondItem="4V8-p3-jI2" secondAttribute="bottom" id="6d6-Xs-0TL"/>
+                            <constraint firstItem="KOD-z2-McQ" firstAttribute="trailing" secondItem="au8-Cy-T8Q" secondAttribute="trailing" id="DUF-jX-XM2"/>
+                            <constraint firstItem="4V8-p3-jI2" firstAttribute="trailing" secondItem="KOD-z2-McQ" secondAttribute="trailing" id="OKD-Td-Hf2"/>
+                            <constraint firstItem="au8-Cy-T8Q" firstAttribute="leading" secondItem="KOD-z2-McQ" secondAttribute="leading" id="QH8-lj-8aN"/>
+                            <constraint firstItem="4V8-p3-jI2" firstAttribute="leading" secondItem="KOD-z2-McQ" secondAttribute="leading" id="ddy-wl-0cv"/>
+                            <constraint firstItem="au8-Cy-T8Q" firstAttribute="top" secondItem="KOD-z2-McQ" secondAttribute="top" id="hTO-39-d5J"/>
+                            <constraint firstItem="KOD-z2-McQ" firstAttribute="bottom" secondItem="au8-Cy-T8Q" secondAttribute="bottom" id="pcz-1h-leu"/>
+                            <constraint firstItem="4V8-p3-jI2" firstAttribute="top" secondItem="KOD-z2-McQ" secondAttribute="top" id="rFZ-3n-cR9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZwP-Fk-QBT"/>
+                    <connections>
+                        <outlet property="myLabel" destination="au8-Cy-T8Q" id="CN9-Wf-8o9"/>
+                        <outlet property="myTableView" destination="4V8-p3-jI2" id="3D0-5l-JLa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="si0-Lx-X0A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985.50724637681162" y="79.6875"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xMI-o6-36q"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="scribble" catalog="system" width="128" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
