@@ -18,8 +18,8 @@ struct NasaItem{
     init(businessModel: Item){
         self.title = businessModel.data?.first?.title
         self.location = businessModel.data?.first?.location
-        self.date = businessModel.data?.first?.dateCreated
-        self.description = businessModel.data?.first?.description508
+        self.date = businessModel.data?.first?.dateCreated?.convertDate()
+        self.description = businessModel.data?.first?.datumDescription?.replacingOccurrences(of: "  ", with: "\n\n")
         self.urlImage = businessModel.links?.first?.href
     }
 }

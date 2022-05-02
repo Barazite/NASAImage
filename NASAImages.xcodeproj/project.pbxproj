@@ -12,6 +12,9 @@
 		20275073280832CC00E885E7 /* NasaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20275072280832CC00E885E7 /* NasaManager.swift */; };
 		202750762808417E00E885E7 /* NasaServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202750752808417E00E885E7 /* NasaServerModel.swift */; };
 		207F669128106F5A00BCE266 /* NasaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F669028106F5A00BCE266 /* NasaItemModel.swift */; };
+		20802BB328193D6300CF976D /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20802BB228193D6300CF976D /* DetailsViewModel.swift */; };
+		20802BB528193D7500CF976D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20802BB428193D7500CF976D /* DetailsViewController.swift */; };
+		208194A42820011200E97418 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208194A32820011200E97418 /* String.swift */; };
 		20929D842806C8B000F4A278 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20929D832806C8B000F4A278 /* SearchViewModel.swift */; };
 		20929D872806E72A00F4A278 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20929D862806E72A00F4A278 /* SearchCollectionViewCell.swift */; };
 		209345D52812D59900B629A2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209345D42812D59900B629A2 /* NetworkError.swift */; };
@@ -30,6 +33,9 @@
 		20275072280832CC00E885E7 /* NasaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaManager.swift; sourceTree = "<group>"; };
 		202750752808417E00E885E7 /* NasaServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaServerModel.swift; sourceTree = "<group>"; };
 		207F669028106F5A00BCE266 /* NasaItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaItemModel.swift; sourceTree = "<group>"; };
+		20802BB228193D6300CF976D /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		20802BB428193D7500CF976D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		208194A32820011200E97418 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		20929D832806C8B000F4A278 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		20929D862806E72A00F4A278 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		209345D42812D59900B629A2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -99,6 +105,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		20802BB128193B7B00CF976D /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				20802BB228193D6300CF976D /* DetailsViewModel.swift */,
+				20802BB428193D7500CF976D /* DetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		208194A2282000FF00E97418 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				208194A32820011200E97418 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		20929D852806E6F500F4A278 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +149,7 @@
 		20A59CBF28057ACA0076545E /* NASAImages */ = {
 			isa = PBXGroup;
 			children = (
+				208194A2282000FF00E97418 /* Extensions */,
 				20275074280832D200E885E7 /* Model */,
 				20275070280832AE00E885E7 /* Managers */,
 				20A59CD428058C5E0076545E /* Modules */,
@@ -142,6 +166,7 @@
 		20A59CD428058C5E0076545E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				20802BB128193B7B00CF976D /* Details */,
 				202750692808268800E885E7 /* List */,
 				20A59CD528058C690076545E /* Search */,
 			);
@@ -233,12 +258,15 @@
 				20A59CC128057ACA0076545E /* AppDelegate.swift in Sources */,
 				20275073280832CC00E885E7 /* NasaManager.swift in Sources */,
 				202750762808417E00E885E7 /* NasaServerModel.swift in Sources */,
+				20802BB328193D6300CF976D /* DetailsViewModel.swift in Sources */,
 				2027506F2808273900E885E7 /* ListViewModel.swift in Sources */,
 				207F669128106F5A00BCE266 /* NasaItemModel.swift in Sources */,
 				2027506D280826FF00E885E7 /* ListViewController.swift in Sources */,
 				20929D842806C8B000F4A278 /* SearchViewModel.swift in Sources */,
 				20A59CC328057ACA0076545E /* SceneDelegate.swift in Sources */,
 				209345D52812D59900B629A2 /* NetworkError.swift in Sources */,
+				20802BB528193D7500CF976D /* DetailsViewController.swift in Sources */,
+				208194A42820011200E97418 /* String.swift in Sources */,
 				20929D872806E72A00F4A278 /* SearchCollectionViewCell.swift in Sources */,
 				20B3E77F281014EE00482460 /* ListTableViewCell.swift in Sources */,
 			);

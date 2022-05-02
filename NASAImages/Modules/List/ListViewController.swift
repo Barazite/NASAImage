@@ -13,7 +13,7 @@ protocol ListViewControllerProtocol {
 
 class ListViewController: UIViewController {
     
-    var listViewModel : ListViewModel?
+    var listViewModel : ListViewModelProtocol?
         
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var myLabel: UILabel!
@@ -22,7 +22,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        self.navigationItem.title = self.listViewModel?.searchText.uppercased()
+        self.navigationItem.title = self.listViewModel?.getSearchText()
         Task{
             await self.listViewModel?.fetchData()
         }
@@ -31,6 +31,14 @@ class ListViewController: UIViewController {
     private func setupTableView(){
         self.myTableView.delegate = self
         self.myTableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let itemCell = sender as? ListTableViewCell
+        let indexPath = myTableView.indexPath(for: itemCell!)
+        let detailsVC = segue.destination as! DetailsViewController
+        let item = self.listViewModel?.getItem(index: (indexPath?.row)!)
+        detailsVC.detailsViewModel = DetailsViewModel(itemNasa: item!, vc: detailsVC)
     }
 }
 
@@ -66,7 +74,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if ((self.listViewModel?.getNumberOfRow())!-1) == indexPath.row {
-            if !self.listViewModel!.finalList{
+            if !self.listViewModel!.checkFinalList(){
                 Task{
                     await self.listViewModel?.fetchData()
                 }

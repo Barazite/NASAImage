@@ -12,6 +12,7 @@ protocol ListViewModelProtocol {
     func getNumberOfRow() -> Int
     func getItem(index: Int) -> NasaItem
     func checkFinalList() -> Bool
+    func getSearchText() -> String
 }
 
 class ListViewModel{
@@ -33,6 +34,10 @@ extension ListViewModel: ListViewModelProtocol{
     
     func checkFinalList() -> Bool {
         self.finalList
+    }
+    
+    func getSearchText() -> String{
+        self.searchText.uppercased()
     }
     
     func fetchData() async{
