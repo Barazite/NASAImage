@@ -26,9 +26,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHP-aQ-Ra8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-993" y="80"/>
+            <point key="canvasLocation" x="-999" y="147"/>
         </scene>
-        <!--NASA Image-->
+        <!--Search View Controller-->
         <scene sceneID="TGX-Ei-cSw">
             <objects>
                 <viewController id="YwH-0c-kAy" customClass="SearchViewController" customModule="NASAImages" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,7 +126,21 @@
                             <constraint firstItem="1uC-yl-9Pc" firstAttribute="top" secondItem="fbD-UP-F63" secondAttribute="bottom" constant="8" id="v3O-9P-aOU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NASA Image" id="VRn-FR-GGZ"/>
+                    <navigationItem key="navigationItem" id="VRn-FR-GGZ">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="LEJ-c4-bfZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3Zc-MG-6tB">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system">
+                                    <color key="baseForegroundColor" systemColor="systemYellowColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="pSk-Y9-PJA" kind="show" identifier="favSegue" id="gn7-Rk-YRP"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myButton" destination="PiO-2Z-s4h" id="I4M-At-0uD"/>
                         <outlet property="myCollectionView" destination="1uC-yl-9Pc" id="jSS-v0-xsz"/>
@@ -135,7 +149,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwI-kS-SoE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="79.6875"/>
+            <point key="canvasLocation" x="3" y="147"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="JPs-Ur-hTG">
+            <objects>
+                <viewController id="pSk-Y9-PJA" customClass="FavoritesViewController" customModule="NASAImages" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ly7-rt-VgE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mob-3V-CB8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavItem" rowHeight="135" id="Tbu-iK-BEa" customClass="FavoritesTableViewCell" customModule="NASAImages" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tbu-iK-BEa" id="pSX-Q7-S3L">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vME-xf-8bH">
+                                                    <rect key="frame" x="5" y="5" width="140" height="139"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="WPM-HA-BRD"/>
+                                                        <constraint firstAttribute="height" constant="140" id="a6K-f0-PfV"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLP-Bf-OXP">
+                                                    <rect key="frame" x="153" y="5" width="233" height="140"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xLP-Bf-OXP" firstAttribute="bottom" secondItem="vME-xf-8bH" secondAttribute="bottom" id="ab9-zn-Ntz"/>
+                                                <constraint firstItem="vME-xf-8bH" firstAttribute="leading" secondItem="pSX-Q7-S3L" secondAttribute="leading" constant="5" id="cgr-Uv-CZU"/>
+                                                <constraint firstItem="xLP-Bf-OXP" firstAttribute="leading" secondItem="vME-xf-8bH" secondAttribute="trailing" constant="8" id="dXq-FL-rUG"/>
+                                                <constraint firstItem="xLP-Bf-OXP" firstAttribute="top" secondItem="vME-xf-8bH" secondAttribute="top" id="n6G-DP-sXN"/>
+                                                <constraint firstItem="vME-xf-8bH" firstAttribute="top" secondItem="pSX-Q7-S3L" secondAttribute="top" constant="5" id="stu-BJ-FnI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xLP-Bf-OXP" secondAttribute="trailing" constant="8" id="zBZ-Fx-ZXZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myFavImage" destination="vME-xf-8bH" id="24d-Bf-CaH"/>
+                                            <outlet property="myFavLabel" destination="xLP-Bf-OXP" id="1CZ-7h-nDV"/>
+                                            <segue destination="YeE-ft-Qrf" kind="show" id="PRn-sU-3xo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ic0-48-Br4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mob-3V-CB8" firstAttribute="trailing" secondItem="Ic0-48-Br4" secondAttribute="trailing" id="7cw-P5-gK9"/>
+                            <constraint firstItem="Mob-3V-CB8" firstAttribute="top" secondItem="Ic0-48-Br4" secondAttribute="top" id="JhU-Rc-LOe"/>
+                            <constraint firstItem="Mob-3V-CB8" firstAttribute="leading" secondItem="Ic0-48-Br4" secondAttribute="leading" id="ZtK-yH-M8N"/>
+                            <constraint firstItem="Mob-3V-CB8" firstAttribute="bottom" secondItem="Ic0-48-Br4" secondAttribute="bottom" id="aXo-zK-AUc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="JX5-gh-jhs"/>
+                    <connections>
+                        <outlet property="myFavTableView" destination="Mob-3V-CB8" id="Fcy-R4-soT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNz-aw-v4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.75362318840587" y="-579.24107142857144"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="ovs-kc-X2a">
@@ -215,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si0-Lx-X0A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985.50724637681162" y="79.6875"/>
+            <point key="canvasLocation" x="993" y="147"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="8Nl-N1-qmm">
@@ -319,27 +402,46 @@
                             <constraint firstItem="kDD-Np-Pxy" firstAttribute="bottom" secondItem="LIS-vm-ioI" secondAttribute="bottom" id="yZ8-Zh-3Le"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tg3-JU-qOf"/>
+                    <navigationItem key="navigationItem" id="tg3-JU-qOf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="In2-dJ-aMQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Faw-X8-4Pb">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system">
+                                    <color key="baseForegroundColor" systemColor="systemYellowColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="favButtonAction:" destination="YeE-ft-Qrf" eventType="touchUpInside" id="aZw-zY-fam"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" systemColor="systemYellowColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myDateLabel" destination="8Ru-Yz-i60" id="paA-2I-5Bb"/>
                         <outlet property="myDescriptionLabel" destination="GX2-HF-D12" id="VWL-NZ-aVn"/>
+                        <outlet property="myFavButton" destination="Faw-X8-4Pb" id="DGD-AT-czL"/>
                         <outlet property="myImage" destination="gvH-RE-5uB" id="e9u-d5-TPd"/>
                         <outlet property="myLocationLabel" destination="xcV-u5-eQZ" id="uS6-Bg-MUM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fI-IZ-oSU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815.9420289855075" y="79.6875"/>
+            <point key="canvasLocation" x="2081" y="147"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xMI-o6-36q"/>
+        <segue reference="ayj-5T-UiY"/>
+        <segue reference="j7P-hP-QwA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="location" catalog="system" width="128" height="118"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="scribble" catalog="system" width="128" height="118"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -348,6 +450,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

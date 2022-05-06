@@ -10,6 +10,7 @@ import UIKit
 
 protocol NasaManagerProtocol {
     func fetchNasa(page: String, search: String) async throws -> NasaServerModel
+    func fetchPhoto(url: URL) async throws -> UIImage
 }
 
 class NasaManager: NasaManagerProtocol {

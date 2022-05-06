@@ -9,6 +9,7 @@ import UIKit
 
 protocol ListViewControllerProtocol {
     func reloadData()
+    func emptyData()
 }
 
 class ListViewController: UIViewController {

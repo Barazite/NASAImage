@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol DetailsViewControllerProtocol {
+    
+}
 class DetailsViewController: UIViewController {
     
     var detailsViewModel: DetailsViewModelProtocol?
@@ -15,8 +18,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var myDateLabel: UILabel!
     @IBOutlet weak var myLocationLabel: UILabel!
     @IBOutlet weak var myDescriptionLabel: UILabel!
-   
-
+    @IBOutlet weak var myFavButton: UIButton!
+    
+    @IBAction func favButtonAction(_ sender: Any) {
+        if self.detailsViewModel!.checkFav(){
+            self.detailsViewModel?.deleteItem()
+            self.myFavButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }else{
+            self.detailsViewModel?.saveItem()
+            self.myFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        }
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         configView()
@@ -24,6 +37,12 @@ class DetailsViewController: UIViewController {
     
     func configView(){
         let item = self.detailsViewModel?.getItem()
+        
+        if self.detailsViewModel!.checkFav() {
+            self.myFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        }else{
+            self.myFavButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
         
         Task{
             guard let url = URL(string: item?.urlImage?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
@@ -38,7 +57,7 @@ class DetailsViewController: UIViewController {
         }
         self.myDateLabel.text = item?.date
         self.myLocationLabel.text = item?.location
-        self.myDescriptionLabel.text = item?.description
+        self.myDescriptionLabel.text = item?.descriptionNasa
     }
-
+    
 }

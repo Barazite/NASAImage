@@ -29,6 +29,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "NASA Image"
         setupCollectionView()
     }
     
@@ -38,15 +39,20 @@ class SearchViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        var textSearch = ""
-        if segue.identifier == "buttonSegue"{
-            textSearch = myTextField.text!
-        }else if segue.identifier == "itemSegue"{
-            let item = sender as? SearchCollectionViewCell
-            textSearch = item?.itemLabel.text?.lowercased() ?? "sun"
+        if segue.identifier == "favSegue"{
+            let favVC = segue.destination as! FavoritesViewController
+            favVC.favoritesViewModel = FavoritesViewModel(vc: favVC)
+        }else{
+            var textSearch = ""
+            if segue.identifier == "buttonSegue"{
+                textSearch = myTextField.text!
+            }else if segue.identifier == "itemSegue"{
+                let item = sender as? SearchCollectionViewCell
+                textSearch = item?.itemLabel.text?.lowercased() ?? "sun"
+            }
+            let listVC = segue.destination as! ListViewController
+            listVC.listViewModel = ListViewModel(search: textSearch, vc: listVC)
         }
-        let listVC = segue.destination as! ListViewController
-        listVC.listViewModel = ListViewModel(search: textSearch, vc: listVC)
     }
 }
 
