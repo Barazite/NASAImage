@@ -39,8 +39,15 @@ extension DetailsViewModel: DetailsViewModelProtocol{
         self.item
     }
     
-    func saveItem() {
-        coreManager.saveItem(item: self.item)
+    func saveItem(){
+        coreManager.saveItem(item: self.item){
+            self.fav = true
+            self.detailsViewController.configButtonFav()
+            self.detailsViewController.showToast(message: "Guardado", seconds: 4.0)
+        }failure: {
+            self.detailsViewController.alertView(description: "Error al guardar")
+        }
+                    
     }
     
     func checkFav() -> Bool{
@@ -48,6 +55,12 @@ extension DetailsViewModel: DetailsViewModelProtocol{
     }
     
     func deleteItem(){
-        coreManager.deleteItem(item: self.item)
+        if coreManager.deleteItem(item: self.item){
+            self.fav = false
+            self.detailsViewController.configButtonFav()
+            self.detailsViewController.showToast(message: "Eliminado", seconds: 4.0)
+        }else{
+            self.detailsViewController.alertView(description: "Error al eliminar")
+        }
     }
 }

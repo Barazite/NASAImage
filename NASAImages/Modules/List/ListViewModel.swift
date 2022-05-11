@@ -60,9 +60,14 @@ extension ListViewModel: ListViewModelProtocol{
             }else{
                 await self.listViewController.emptyData()
             }
+        }catch NetworkError.networkUnreachable{
+            await self.listViewController.alertView(description: NetworkError.networkUnreachable.description)
+        }catch NetworkError.accepted{
+            await self.listViewController.alertView(description: NetworkError.accepted.description)
+        }catch NetworkError.requestError{
+            await self.listViewController.alertView(description: NetworkError.requestError.description)
         }catch{
-            print("Error")
-            
+            await self.listViewController.alertView(description: error.localizedDescription)
         }
     }
     

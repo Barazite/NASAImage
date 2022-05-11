@@ -23,26 +23,19 @@ class DetailsViewController: UIViewController {
     @IBAction func favButtonAction(_ sender: Any) {
         if self.detailsViewModel!.checkFav(){
             self.detailsViewModel?.deleteItem()
-            self.myFavButton.setImage(UIImage(systemName: "star"), for: .normal)
         }else{
             self.detailsViewModel?.saveItem()
-            self.myFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
     }
     
     override func viewDidLoad(){
         super.viewDidLoad()
         configView()
+        configButtonFav()
     }
     
     func configView(){
         let item = self.detailsViewModel?.getItem()
-        
-        if self.detailsViewModel!.checkFav() {
-            self.myFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        }else{
-            self.myFavButton.setImage(UIImage(systemName: "star"), for: .normal)
-        }
         
         Task{
             guard let url = URL(string: item?.urlImage?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
@@ -60,4 +53,11 @@ class DetailsViewController: UIViewController {
         self.myDescriptionLabel.text = item?.descriptionNasa
     }
     
+    func configButtonFav(){
+        if self.detailsViewModel!.checkFav() {
+            self.myFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        }else{
+            self.myFavButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+    }
 }

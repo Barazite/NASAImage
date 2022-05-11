@@ -23,17 +23,17 @@ class NasaManager: NasaManagerProtocol {
         let (data, response) = try await URLSession.shared.data(from: URL(string: endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
         
         guard let httpResponse = response as? HTTPURLResponse else{
-            throw ErrorTest.test
+            throw NetworkError.networkUnreachable
         }
         if (200...299).contains(httpResponse.statusCode){
             do{
                 let serverModel = try JSONDecoder().decode(NasaServerModel.self, from: data)
                 return serverModel
             }catch{
-                throw ErrorTest.test
+                throw NetworkError.accepted
             }
         }else{
-            throw ErrorTest.test        }
+            throw NetworkError.requestError       }
     }
     
     func fetchPhoto(url: URL) async throws -> UIImage {
@@ -44,11 +44,11 @@ class NasaManager: NasaManagerProtocol {
             
             guard let httpResponse = response as? HTTPURLResponse,
                   httpResponse.statusCode == 200 else {
-                throw ErrorTest.test
+                throw NetworkError.networkUnreachable
             }
             
             guard let image = UIImage(data: data) else {
-                throw ErrorTest.test
+                throw NetworkError.accepted
             }
             let cacheData = CachedURLResponse(response: response, data: data)
             URLCache.shared.storeCachedResponse(cacheData, for: URLRequest(url: url))

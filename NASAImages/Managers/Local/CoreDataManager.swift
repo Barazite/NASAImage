@@ -11,8 +11,8 @@ import CoreData
 
 protocol CoreDataManagerProtocol {
     func fetchLocalNasa() -> [NasaItem]
-    func saveItem(item: NasaItem)
-    func deleteItem(item: NasaItem)
+    func saveItem(item: NasaItem, completion: () -> Void, failure: () -> Void)
+    func deleteItem(item: NasaItem) -> Bool
     func checkItem(item: NasaItem) -> Bool
 }
 
@@ -51,19 +51,21 @@ class CoreDataManager: CoreDataManagerProtocol {
         return []
     }
     
-    func saveItem(item: NasaItem){
+    func saveItem(item: NasaItem, completion: () -> Void, failure: () -> Void){
         _ = convertData(item: item)
         
         do{
             try self.managedContext.save()
             print("Item guardado")
+            completion()
         }catch{
             print("Error al guardar item")
+            failure()
         }
         
     }
     
-    func deleteItem(item: NasaItem){
+    func deleteItem(item: NasaItem) -> Bool{
         let fetchRequest: NSFetchRequest<NasaItemCoreData> = NasaItemCoreData.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "urlImage = %@", item.urlImage!)
         do{
@@ -72,10 +74,13 @@ class CoreDataManager: CoreDataManagerProtocol {
                 self.managedContext.delete(result.first!)
                 try self.managedContext.save()
                 print("Eliminado")
+                return true
             }
         }catch{
             print("Error al eliminar")
+            return false
         }
+        return false
     }
     
     func checkItem(item: NasaItem) -> Bool{
