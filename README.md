@@ -4,7 +4,10 @@
 [![iOS](https://img.shields.io/badge/iOS-15.4-red.svg?longCache=true&style=popout-square)](https://www.apple.com/es/ios)
 
 # NASA IMAGES <img src="https://images.nasa.gov/images/nasa_logo-large.ee501ef4.png" width="50" align="center"/>
+<<<<<<< HEAD
 -
+=======
+>>>>>>> main
 
 
 This project makes use of the NASA API for images from this url [Nasa Images Web](https://images.nasa.gov). For this I use the documentation provided in [Nasa Images Doc](https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf).
@@ -32,5 +35,9 @@ Adrian Sevilla Diaz
 
 iOS Developer
 
+<<<<<<< HEAD
 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="30" align="center"/> Linkedin: [Linkedin Profile](www.linkedin.com/in/adrian-sevilla-díaz-618592214)
+=======
+<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="30" align="center"/> Linkedin: [Linkedin Profile](https://www.linkedin.com/in/adrian-sevilla-díaz-618592214)
+>>>>>>> main
 
